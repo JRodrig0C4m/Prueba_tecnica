@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+
+  datasource:
+    # H2 en memoria (tablas vacías al iniciar). Ideal para meter datos desde Postman.
+    url: jdbc:h2:mem:techtest;MODE=PostgreSQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driverClassName: org.h2.Driver
+    username: sa
+    password:
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+app:
+  crypto:
+    # AES-256 key: 32 bytes en Base64.
+    # Ejemplo: 32 bytes ASCII "0123456789abcdef0123456789abcdef" en Base64.
+    aesKeyBase64: "MDEyMzQ1Njc4OWFiY2RlZjAxMjM0NTY3ODlhYmNkZWY="
+
+springdoc:
+  swagger-ui:
+    path: /swagger
